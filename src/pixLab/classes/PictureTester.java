@@ -51,6 +51,13 @@ public class PictureTester
     swan.edgeDetection(10);
     swan.explore();
   }
+  public static void testMirrorGull()
+  {
+    Picture Gull = new Picture("seagull.jpg");
+    Gull.mirrorVertical();
+    Gull.explore();
+  }
+  
   
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -66,10 +73,10 @@ public class PictureTester
     //testNegate();
     //testGrayscale();
     //testFixUnderwater();
-    testMirrorVertical();
-    //testMirrorTemple();
+  //  testMirrorVertical();
+    testMirrorTemple();
     //testMirrorArms();
-    //testMirrorGull();
+    testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
     //testCopy();

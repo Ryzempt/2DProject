@@ -1,4 +1,7 @@
 package pixLab.classes;
+
+import java.awt.Color;
+
 /**
  * This class contains class (static) methods
  * that will help you test the Picture class 
@@ -58,6 +61,16 @@ public class PictureTester
     Gull.explore();
   }
   
+  public static void testChromakey()
+  {
+	  Picture source = new Picture("1920x1080(1).jpg");
+	  Picture background = new Picture("CUBE.jpg");
+	  source.explore();
+	  background.explore();
+	  source.chromakey(background, Color.WHITE);
+	  source.explore();
+  }
+  
   
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -88,5 +101,6 @@ public class PictureTester
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
+    testChromakey();
   }
 }

@@ -228,7 +228,7 @@ public class Picture extends SimplePicture
     this.copy(flower1,400,0);
     this.copy(flower2,500,0);
     this.mirrorVertical();
-    this.write("collage.jpg");
+    this.write("Mclaren 69 P1 GTR.jpg");
   }
   
   
@@ -268,6 +268,23 @@ public class Picture extends SimplePicture
     beach.explore();
     beach.zeroBlue();
     beach.explore();
+  }
+  
+  public void chromakey(Picture replacement, Color changeColor)
+  {
+	  Pixel [][] mainPixels = this.getPixels2D();
+	  Pixel [][] replacementPixels = replacement.getPixels2D();
+	  
+	  for (int row = 0; row < mainPixels.length; row++)
+	  {
+		  for (int col = 0; col < mainPixels[0].length; col++)
+		  {
+			  if (mainPixels[row][col].colorDistance(changeColor) < 10)
+			  {
+				  mainPixels[row][col].setColor(replacementPixels[row][col].getColor());
+			  }
+		  }
+	  }
   }
   
 } // this } is the end of class Picture, put all new methods before this

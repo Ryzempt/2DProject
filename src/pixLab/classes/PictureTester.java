@@ -83,6 +83,18 @@ public class PictureTester
 	  source.explore();
   }
   
+  public static void testGlitch()
+  {
+	  Picture source = new Picture("1920x1080(1).jpg");
+	  Picture background = new Picture("BlackArt.jpg");
+	  source.explore();
+	  background.explore();
+	  source.glitchPicture(background);
+	  source.explore();
+	  source.revealPicture();
+	  source.explore();
+	
+  }
   
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -114,6 +126,7 @@ public class PictureTester
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
     //testChromakey();
-    testSteganography();
+    //testSteganography();
+	  testGlitch();
   }
 }

@@ -301,6 +301,10 @@ public class Picture extends SimplePicture
 		  for (int col = 0; col < pixels[0].length; col++)
 		  {
 			 shiftedValue = (col + amount) % width;
+			 if (amount < 0)
+			 {
+				 shiftedValue = ((col + amount) % width + width) % width;
+			 }
 			 copied[row][col].setColor(pixels[row][shiftedValue].getColor());
 		  }
 	  }
@@ -347,13 +351,13 @@ public void revealPicture()
 	{
 		for (int col = 0; col < pixels[0].length; col++)
 		{
-			if (pixels[row][col].getRed() > 0 && pixels[row][col].getRed() % 2 !=1)
+			if (pixels[row][col].getBlue() > 12 && pixels[row][col].getBlue() % 2 >=5)
 			{
 				pixels[row][col].setColor(Color.CYAN);
 			}
-			else if (pixels[row][col].getRed() > 0 && pixels[row][col].getRed() % 2 == 1)
+			else if (pixels[row][col].getBlue() > 15 && pixels[row][col].getBlue() % 5 >= 1)
 			{
-				pixels[row][col].setColor(Color.MAGENTA);
+				pixels[row][col].setColor(Color.RED);
 			}
 		}
 	}
@@ -383,6 +387,30 @@ public void hidePicture(Picture hidden)
 			}
 		}
 	}
+}
+
+public void glitchPicture(Picture hidden)
+{
+Pixel[][] pixels = this.getPixels2D();
+Pixel[][] hiddenPixels = hidden.getPixels2D();
+
+for (int row = 0; row < pixels.length && row < hiddenPixels.length; row++)
+{
+	for (int col = 0; col < pixels[0].length && col < hiddenPixels[0].length; col++)
+	{
+		if (hiddenPixels[row][col].colorDistance(Color.BLACK) > 5)
+		{
+		if (pixels[row][col].getGreen() > 0 && pixels[row][col].getGreen() % 2 != 1)
+		{
+			pixels[row][col].setGreen(pixels[row][col].getGreen() - 1);
+		}
+		else if (pixels[row][col].getGreen() > 0 && pixels[row][col].getGreen() % 2 == 1)
+		{
+			pixels[row][col].setGreen(pixels[row][col].getGreen() - 1);
+		}
+	}
+	}
+}
 }
   
 } // this } is the end of class Picture, put all new methods before this
